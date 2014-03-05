@@ -1,0 +1,23 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities"
+tabStyle="Opportunity" extensions="tenPageSizeExt">
+<apex:form >
+<apex:pageBlock title="Edit Stage and Close Date" mode="edit">
+<apex:pageMessages />
+<apex:pageBlockButtons location="top">
+<apex:commandButton value="Save" action="{!save}"/>
+<apex:commandButton value="Cancel" action="{!cancel}"/>
+</apex:pageBlockButtons>
+127
+Overriding Buttons, Links, and Tabs with Visualforce Adding Custom List Buttons using Standard List Controllers
+<apex:pageBlockTable value="{!selected}" var="opp">
+<apex:column value="{!opp.name}"/>
+<apex:column headerValue="Stage">
+<apex:inputField value="{!opp.stageName}"/>
+</apex:column>
+<apex:column headerValue="Close Date">
+<apex:inputField value="{!opp.closeDate}"/>
+</apex:column>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

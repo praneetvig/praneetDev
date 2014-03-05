@@ -1,0 +1,324 @@
+<apex:page standardcontroller="Account"><apex:messages />
+	<apex:sectionheader title="{!$ObjectType.Account.label} Detail" subtitle="{!Account.name}"/>
+	<chatter:feedwithfollowers entityId="{!Account.Id}"/>
+	<apex:form >
+		<apex:pageblock mode="maindetail" title="{!$ObjectType.Account.label} Detail">
+			<apex:pageblockbuttons >
+				<apex:commandbutton value="Edit" action="{!Edit}"/>
+				<apex:commandbutton value="Delete" action="{!Delete}"/>
+				<!-- *************** Uncomment as needed LAYOUT PAGE :: http://WWW.CLERISOFT.COM (2008-2013) *************** -->
+					<!-- <apex:commandbutton value="Include Offline" action="{!URLFOR($Action.Account.IncludeOffline,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Clone" action="{!URLFOR($Action.Account.Clone,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Convert" action="{!URLFOR($Action.Account.Convert,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Find Duplicates" action="{!URLFOR($Action.Account.FindDup,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Request Update" action="{!URLFOR($Action.Account.RequestUpdate,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Advanced Setup" action="{!URLFOR($Action.Account.AdvancedSetup,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Manage Members" action="{!URLFOR($Action.Account.ManageMembers,Account.id)}"/> -->
+					<!-- <apex:commandbutton value="Close Case" action="{!URLFOR($Action.Account.CloseCase,Account.id)}"/> -->
+				<!-- *************** Uncomment as needed LAYOUT PAGE :: http://WWW.CLERISOFT.COM (2008-2013) *************** -->
+			</apex:pageblockbuttons>
+
+			<!-- ********** Output Panel for Record Type : Bank Account **********  -->
+			<apex:outputpanel rendered="{!OR(ISNULL(Account.RecordTypeId),CASESAFEID(Account.RecordTypeId)='01290000000t0tuAAA')}">
+				<apex:pageblocksection title="Account Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Account Owner"/>
+							<apex:outputpanel >
+							<apex:outputfield value="{!Account.OwnerId}"/>
+							<apex:outputlink value="{!URLFOR($Action.Account.ChangeOwner,Account.id)}" rendered="{!NOT(ISNULL(Account.Id))}">[Change]</apex:outputlink>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:outputfield value="{!Account.Rating}"/>
+					<apex:outputfield value="{!Account.Name}"/>
+					<apex:outputfield value="{!Account.Phone}"/>
+					<apex:outputfield value="{!Account.ParentId}"/>
+					<apex:outputfield value="{!Account.Fax}"/>
+					<apex:outputfield value="{!Account.AccountNumber}"/>
+					<apex:outputfield value="{!Account.Website}"/>
+					<apex:outputfield value="{!Account.Site}"/>
+					<apex:outputfield value="{!Account.TickerSymbol}"/>
+					<apex:outputfield value="{!Account.Count__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.Active_Status__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.Instant__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.ehire__c}"/>
+					<apex:pageblocksectionitem />
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Address Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Billing Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.BillingStreet}"/><br/>
+							<apex:outputfield value="{!Account.BillingCity}"/>
+							<apex:outputfield value="{!Account.BillingState}"/>
+							<apex:outputfield value="{!Account.BillingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.BillingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Shipping Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.ShippingStreet}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCity}"/>
+							<apex:outputfield value="{!Account.ShippingState}"/>
+							<apex:outputfield value="{!Account.ShippingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Additional Information" showheader="false" collapsible="false" columns="2">
+					<apex:outputfield value="{!Account.Active__c}"/>
+					<apex:outputfield value="{!Account.UpsellOpportunity__c}"/>
+					<apex:outputfield value="{!Account.CustomerPriority__c}"/>
+					<apex:outputfield value="{!Account.NumberofLocations__c}"/>
+					<apex:outputfield value="{!Account.SLA__c}"/>
+					<apex:outputfield value="{!Account.SLAExpirationDate__c}"/>
+					<apex:outputfield value="{!Account.SLASerialNumber__c}"/>
+					<apex:outputfield value="{!Account.Type}"/>
+					<apex:outputfield value="{!Account.Industry}"/>
+					<apex:outputfield value="{!Account.Sic}"/>
+					<apex:outputfield value="{!Account.AnnualRevenue}"/>
+					<apex:outputfield value="{!Account.NumberOfEmployees}"/>
+					<apex:outputfield value="{!Account.Ownership}"/>
+					<apex:outputfield value="{!Account.Jigsaw}"/>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="System Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Created By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.CreatedById}"/>
+							<apex:outputfield value="{!Account.CreatedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Last Modified By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.LastModifiedById}"/>
+							<apex:outputfield value="{!Account.LastModifiedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Description Information" showheader="false" collapsible="false" columns="1">
+					<apex:outputfield value="{!Account.Description}"/>
+				</apex:pageblocksection>
+			</apex:outputpanel>
+
+			<!-- ********** Output Panel for Record Type : Demo 1 **********  -->
+			<apex:outputpanel rendered="{!CASESAFEID(Account.RecordTypeId)='01290000000t0u9AAA'}">
+				<apex:pageblocksection title="Account Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Account Owner"/>
+							<apex:outputpanel >
+							<apex:outputfield value="{!Account.OwnerId}"/>
+							<apex:outputlink value="{!URLFOR($Action.Account.ChangeOwner,Account.id)}" rendered="{!NOT(ISNULL(Account.Id))}">[Change]</apex:outputlink>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:outputfield value="{!Account.Active__c}"/>
+					<apex:outputfield value="{!Account.Name}"/>
+					<apex:outputfield value="{!Account.UpsellOpportunity__c}"/>
+					<apex:outputfield value="{!Account.ParentId}"/>
+					<apex:outputfield value="{!Account.Type}"/>
+					<apex:outputfield value="{!Account.Site}"/>
+					<apex:outputfield value="{!Account.Rating}"/>
+					<apex:outputfield value="{!Account.Industry}"/>
+					<apex:outputfield value="{!Account.Phone}"/>
+					<apex:outputfield value="{!Account.Sic}"/>
+					<apex:outputfield value="{!Account.Fax}"/>
+					<apex:outputfield value="{!Account.AnnualRevenue}"/>
+					<apex:outputfield value="{!Account.Website}"/>
+					<apex:outputfield value="{!Account.NumberOfEmployees}"/>
+					<apex:outputfield value="{!Account.TickerSymbol}"/>
+					<apex:outputfield value="{!Account.Count__c}"/>
+					<apex:outputfield value="{!Account.Ownership}"/>
+					<apex:outputfield value="{!Account.Active_Status__c}"/>
+					<apex:outputfield value="{!Account.NumberofLocations__c}"/>
+					<apex:outputfield value="{!Account.Instant__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.ehire__c}"/>
+					<apex:pageblocksectionitem />
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Address Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Billing Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.BillingStreet}"/><br/>
+							<apex:outputfield value="{!Account.BillingCity}"/>
+							<apex:outputfield value="{!Account.BillingState}"/>
+							<apex:outputfield value="{!Account.BillingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.BillingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Shipping Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.ShippingStreet}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCity}"/>
+							<apex:outputfield value="{!Account.ShippingState}"/>
+							<apex:outputfield value="{!Account.ShippingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Additional Information" showheader="false" collapsible="false" columns="2">
+					<apex:outputfield value="{!Account.CustomerPriority__c}"/>
+					<apex:outputfield value="{!Account.SLA__c}"/>
+					<apex:outputfield value="{!Account.SLAExpirationDate__c}"/>
+					<apex:outputfield value="{!Account.SLASerialNumber__c}"/>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="System Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Created By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.CreatedById}"/>
+							<apex:outputfield value="{!Account.CreatedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Last Modified By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.LastModifiedById}"/>
+							<apex:outputfield value="{!Account.LastModifiedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Description Information" showheader="false" collapsible="false" columns="1">
+					<apex:outputfield value="{!Account.Description}"/>
+				</apex:pageblocksection>
+			</apex:outputpanel>
+
+			<!-- ********** Output Panel for Record Type : Master **********  -->
+			<apex:outputpanel rendered="{!CASESAFEID(Account.RecordTypeId)='012000000000000AAA'}">
+				<apex:pageblocksection title="Account Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Account Owner"/>
+							<apex:outputpanel >
+							<apex:outputfield value="{!Account.OwnerId}"/>
+							<apex:outputlink value="{!URLFOR($Action.Account.ChangeOwner,Account.id)}" rendered="{!NOT(ISNULL(Account.Id))}">[Change]</apex:outputlink>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:outputfield value="{!Account.Rating}"/>
+					<apex:outputfield value="{!Account.Name}"/>
+					<apex:outputfield value="{!Account.Phone}"/>
+					<apex:outputfield value="{!Account.ParentId}"/>
+					<apex:outputfield value="{!Account.Fax}"/>
+					<apex:outputfield value="{!Account.AccountNumber}"/>
+					<apex:outputfield value="{!Account.Website}"/>
+					<apex:outputfield value="{!Account.Site}"/>
+					<apex:outputfield value="{!Account.TickerSymbol}"/>
+					<apex:outputfield value="{!Account.Type}"/>
+					<apex:outputfield value="{!Account.Ownership}"/>
+					<apex:outputfield value="{!Account.Industry}"/>
+					<apex:outputfield value="{!Account.NumberOfEmployees}"/>
+					<apex:outputfield value="{!Account.AnnualRevenue}"/>
+					<apex:outputfield value="{!Account.Sic}"/>
+					<apex:outputfield value="{!Account.Count__c}"/>
+					<apex:outputfield value="{!Account.Jigsaw}"/>
+					<apex:outputfield value="{!Account.Active_Status__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.Instant__c}"/>
+					<apex:pageblocksectionitem />
+					<apex:outputfield value="{!Account.ehire__c}"/>
+					<apex:pageblocksectionitem />
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Address Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Billing Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.BillingStreet}"/><br/>
+							<apex:outputfield value="{!Account.BillingCity}"/>
+							<apex:outputfield value="{!Account.BillingState}"/>
+							<apex:outputfield value="{!Account.BillingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.BillingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Shipping Address"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.ShippingStreet}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCity}"/>
+							<apex:outputfield value="{!Account.ShippingState}"/>
+							<apex:outputfield value="{!Account.ShippingPostalCode}"/><br/>
+							<apex:outputfield value="{!Account.ShippingCountry}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Further Details" showheader="true" collapsible="true" columns="1">
+					<apex:pageblocksectionitem />
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Additional Information" showheader="false" collapsible="false" columns="2">
+					<apex:outputfield value="{!Account.CustomerPriority__c}"/>
+					<apex:outputfield value="{!Account.SLA__c}"/>
+					<apex:outputfield value="{!Account.SLAExpirationDate__c}"/>
+					<apex:outputfield value="{!Account.SLASerialNumber__c}"/>
+					<apex:outputfield value="{!Account.NumberofLocations__c}"/>
+					<apex:outputfield value="{!Account.UpsellOpportunity__c}"/>
+					<apex:outputfield value="{!Account.Active__c}"/>
+					<apex:pageblocksectionitem />
+				</apex:pageblocksection>
+				<apex:pageblocksection title="System Information" showheader="false" collapsible="false" columns="2">
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Created By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.CreatedById}"/>
+							<apex:outputfield value="{!Account.CreatedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+					<apex:pageblocksectionitem >
+						<apex:outputlabel value="Last Modified By"/>
+						<apex:outputpanel >
+							<apex:outputfield value="{!Account.LastModifiedById}"/>
+							<apex:outputfield value="{!Account.LastModifiedDate}"/>
+						</apex:outputpanel>
+					</apex:pageblocksectionitem>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Description Information" showheader="false" collapsible="false" columns="1">
+					<apex:outputfield value="{!Account.Description}"/>
+				</apex:pageblocksection>
+			</apex:outputpanel>
+		</apex:pageblock>
+	</apex:form>
+
+	<!-- ********** Related Lists Output Panel for Record Type : Bank Account **********  -->
+	<apex:outputpanel rendered="{!OR(ISNULL(Account.RecordTypeId),CASESAFEID(Account.RecordTypeId)='01290000000t0tuAAA')}">
+		<apex:relatedlist list="Contacts" title="Contacts"/>
+		<apex:relatedlist list="OpenActivities" title="Open Activities"/>
+		<apex:relatedlist list="ActivityHistories" title="Activity History"/>
+		<apex:relatedlist list="Opportunities" title="Opportunities"/>
+		<apex:relatedlist list="Cases" title="Cases"/>
+		<apex:relatedlist list="NotesAndAttachments" title="Notes & Attachments"/>
+		<apex:relatedlist list="AccountPartnersFrom" title="Partners"/>
+		<apex:relatedlist list="AccountTeamMembers" title="Account Team"/>
+		<apex:relatedlist list="ProcessSteps" title="Approval History"/>
+	</apex:outputpanel>
+
+	<!-- ********** Related Lists Output Panel for Record Type : Demo 1 **********  -->
+	<apex:outputpanel rendered="{!CASESAFEID(Account.RecordTypeId)='01290000000t0u9AAA'}">
+		<apex:relatedlist list="Contacts" title="Contacts"/>
+		<apex:relatedlist list="Opportunities" title="Opportunities"/>
+		<apex:relatedlist list="Cases" title="Cases"/>
+		<apex:relatedlist list="OpenActivities" title="Open Activities"/>
+		<apex:relatedlist list="ActivityHistories" title="Activity History"/>
+		<apex:relatedlist list="NotesAndAttachments" title="Notes & Attachments"/>
+		<apex:relatedlist list="AccountPartnersFrom" title="Partners"/>
+		<apex:relatedlist list="AccountTeamMembers" title="Account Team"/>
+		<apex:relatedlist list="ProcessSteps" title="Approval History"/>
+	</apex:outputpanel>
+
+	<!-- ********** Related Lists Output Panel for Record Type : Master **********  -->
+	<apex:outputpanel rendered="{!CASESAFEID(Account.RecordTypeId)='012000000000000AAA'}">
+		<apex:relatedlist list="Contacts" title="Contacts"/>
+		<apex:relatedlist list="Opportunities" title="Opportunities"/>
+		<apex:relatedlist list="Cases" title="Cases"/>
+		<apex:relatedlist list="OpenActivities" title="Open Activities"/>
+		<apex:relatedlist list="ActivityHistories" title="Activity History"/>
+		<apex:relatedlist list="NotesAndAttachments" title="Notes & Attachments"/>
+		<apex:relatedlist list="AccountPartnersFrom" title="Partners"/>
+		<apex:relatedlist list="AccountTeamMembers" title="Account Team"/>
+		<apex:relatedlist list="ProcessSteps" title="Approval History"/>
+	</apex:outputpanel>
+	<center><br/>
+		<i style="font-size:10px;color:#aaa;">Generated By LAYOUT PAGE <a href="http://www.clerisoft.com" target="_blank">[http://www.clerisoft.com]</a> (2008-2013) : Tue Sep 10 2013 10:57:17 GMT+0530 (India Standard Time)</i>
+	</center><br/>
+</apex:page>

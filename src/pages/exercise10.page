@@ -1,0 +1,7 @@
+<apex:page standardController="account" >
+    <apex:pageBlock rendered="{!$ObjectType.account.accessible}">
+        <p>Display if you can see object.</p>
+       
+    </apex:pageBlock>
+
+</apex:page>

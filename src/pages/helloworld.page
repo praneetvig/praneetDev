@@ -1,0 +1,20 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+<br/> Hello World <br/>
+<apex:outputText value="Hello World"></apex:outputText>
+<script type='text/javascript' src='https://c.la1t1.salesforceliveagent.com/content/g/js/29.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la1t1.salesforceliveagent.com/chat', '57290000000PQ0L', '00D90000000mOn0');
+</script>
+
+
+<img id="liveagent_button_online_57390000000PQKG" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('57390000000PQKG')" src="https://testpraneet-developer-edition.ap1.force.com/test/resource/1391160753000/OnlineChatImage" /><img id="liveagent_button_offline_57390000000PQKG" style="display: none; border: 0px none; " src="https://testpraneet-developer-edition.ap1.force.com/test/resource/1391160781000/OfflineChatImage" />
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57390000000PQKG', document.getElementById('liveagent_button_online_57390000000PQKG'));
+liveagent.showWhenOffline('57390000000PQKG', document.getElementById('liveagent_button_offline_57390000000PQKG'));
+});</script>
+
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

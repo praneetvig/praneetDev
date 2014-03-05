@@ -1,0 +1,9 @@
+<apex:page standardController="Account" tabStyle="Opportunity">
+    <apex:pageBlock title="Hello {!$User.FirstName}">
+        <apex:pageBlockSection >
+            Your Viewing <h1>{!account.name} </h1> Account
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+
+</apex:page>

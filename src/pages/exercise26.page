@@ -1,0 +1,5 @@
+<apex:page >
+<apex:form >
+<c:TestComponent1 record="Opp List" />
+</apex:form>
+</apex:page>

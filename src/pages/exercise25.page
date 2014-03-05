@@ -1,0 +1,23 @@
+<apex:page controller="exercise25" >
+    <apex:form >
+        <apex:pageBlock title="Enter Account Informations">
+                <apex:pageMessage summary="Validation error 
+           messages appear in the pageMessages component." severity="confirm" strength="1" />
+                <apex:pageMessages />
+            <apex:pageBlockSection >
+                    
+                <apex:inputField label="name" value="{!acct.name}"/>
+                <apex:inputField label="AccountNumber" value="{!acct.AccountNumber}"/>
+                <apex:inputField label="Phone" value="{!acct.Phone}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Enter Contact information">
+            <apex:pageBlockSection >
+                <apex:inputField label="Firstname" value="{!con.firstname}"/>
+                <apex:inputField label="LastName" value="{!con.LastName}"/>
+                <apex:inputField label="email" value="{!con.email}"/>
+            </apex:pageBlockSection>    
+        </apex:pageBlock>
+            <apex:commandButton value="Save" action="{!save}"/>    
+    </apex:form>        
+</apex:page>

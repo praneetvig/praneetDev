@@ -1,0 +1,7 @@
+<apex:page StandardController="Opportunity">
+ 
+ <apex:pageBlock title="Hello {!$User.FirstName} {!$User.LastName}!">
+ <apex:pageBlockSection >  Your are Viewing the {!Opportunity.name} 
+</apex:pageBlockSection>
+  </apex:pageBlock> 
+</apex:page>

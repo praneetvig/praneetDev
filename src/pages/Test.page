@@ -1,0 +1,14 @@
+<apex:page >
+<apex:outputPanel >
+Hello
+</apex:outputPanel>
+<apex:outputPanel id="thePanel_1">
+                                        <li><a href="BPSchemeHistory" title="BP history">BP history</a></li>
+                                        <li><a href="BPOrderList" title="My Order Details">C2W Records</a></li> 
+                                        <li><a href="BPUpload" title="Scheme Member Upload">Process New File</a></li>
+                                    </apex:outputPanel>
+       <table> <tr style="font-size:100%;font-style:italic">
+                            <td width="25%">Name</td><td width="20%">Status</td><td width="20%">Upload By</td><td width="20%">Upload Date</td>
+        </tr>  </table>
+        <a href="BPHomeSecure"><h1><span>Halfords cycle2work</span></h1></a> | <a href="sitestorelocator" title="Visit the store locator to find your nearest store" target="_blank">Store List</a>
+</apex:page>

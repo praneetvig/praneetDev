@@ -1,0 +1,25 @@
+<apex:page standardController="Account" renderAs="pdf">
+<apex:pageBlock title="Hello {!$User.FirstName}">
+ you are viewing {!account.name} account</apex:pageBlock>
+ <apex:pageBlock title="Contacts">
+ <apex:pageblockTable value="{!account.contacts}" var="Contact">
+ <apex:column value="{!Contact.name}"/>
+  <apex:column value="{!Contact.MailingCity}"/>
+ <apex:column value="{!Contact.Phone}"/>
+ <apex:column value="{!account.name}"/>
+ <apex:column value="{!account.industry}"/>
+ </apex:pageblockTable>
+ </apex:pageBlock>
+</apex:page>
+
+
+<!--<apex:page standardController="Account">
+<apex:pageBlock title="Quick Edit: {!Contact.Name}">
+<apex:pageBlockSection title="Contact Details" columns="1">
+ <apex:OutputField value="{!Contact.Phone}"/> 
+<apex:outputField value="{!Contact.MobilePhone}" label="Mobile"/>
+<apex:OutputField value="{!contact.email}" label="{!contact.firstname + 's Email'}"/>
+<apex:relatedList list="accounts" />
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>  -->

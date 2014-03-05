@@ -1,0 +1,11 @@
+<apex:page renderAs="pdf" standardController="contact" extensions="myContactExtension" >
+         Hello {!contact.Firstname}
+     <apex:detail subject="{!contact.id}" relatedList="false" title="false"/>
+         <apex:pageBlock title="Related opportunity to contact"> 
+            <apex:pageBlockTable value="{!oppList}" var="a"> 
+                <apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.Probability}"/> 
+                <apex:column value="{!a.StageName}"/> 
+            </apex:pageBlockTable>
+         </apex:pageBlock>
+</apex:page>

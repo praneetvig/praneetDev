@@ -1,0 +1,3 @@
+<apex:page >
+<c:testComp s1="sample s1" s2="red"> </c:testComp>
+</apex:page>

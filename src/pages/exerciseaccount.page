@@ -1,0 +1,27 @@
+<apex:page Controller="accountExtension1">
+    <apex:form id="detail1">
+        <apex:pageBlock title="Select Accounts">
+            <apex:pageBlockSection >
+                  <apex:selectList id="accts" value="{!str}" size="1">
+                        <apex:selectOptions value="{!acct}" >                           
+                        </apex:selectOptions>
+                        <apex:actionSupport event="onchange" rerender="detail3,detail4" action="{!contactname}"/>                        
+                  </apex:selectList>                 
+            </apex:pageBlockSection>
+          </apex:pageBlock>  
+        <apex:outputPanel id="detail3" >
+            <apex:pageBlock title="Contacts"> 
+                <apex:pageBlockTable value="{!conList}" var="convar"> 
+                <apex:column value="{!convar.Name}"/>             
+            </apex:pageBlockTable> 
+            </apex:pageBlock>
+        </apex:outputPanel>       
+         <apex:outputPanel id="detail4">
+            <apex:pageBlock title="Opportunity"> 
+                <apex:pageBlockTable value="{!oppList}" var="oppvar"> 
+                <apex:column value="{!oppvar.Name}"/>              
+            </apex:pageBlockTable> 
+            </apex:pageBlock>
+        </apex:outputPanel>   
+    </apex:form>
+</apex:page>

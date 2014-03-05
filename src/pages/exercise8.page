@@ -1,0 +1,21 @@
+<apex:page standardController="Account">
+    <apex:pageBlock title="Hello {!$User.FirstName}">
+         you are viewing {!account.name} account</apex:pageBlock>
+     <apex:pageBlock title="Contacts">
+         <apex:form >
+             <apex:pageblockTable value="{!account.contacts}" var="Contact">
+             <apex:column > <apex:outputPanel > <apex:actionSupport event="onmouseover" rerender="detail"> <apex:param name="cid" value="{!Contact.id}"/> </apex:actionSupport> {!Contact.Name} </apex:outputPanel>
+             </apex:column>
+              <apex:column value="{!Contact.MailingCity}"/>
+             <apex:column value="{!Contact.Phone}"/>
+              </apex:pageblockTable>
+         </apex:form>
+    </apex:pageBlock>
+        <apex:outputPanel id="detail"> 
+            <apex:actionStatus startText="Requesting..."> 
+            <apex:facet name="stop">
+            <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" title="false"/> 
+            </apex:facet> 
+            </apex:actionStatus>
+        </apex:outputPanel>
+</apex:page>
