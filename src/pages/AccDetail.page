@@ -109,7 +109,7 @@
 			<apex:outputpanel rendered="{!CASESAFEID(Account.RecordTypeId)='01290000000t0u9AAA'}">
 				<apex:pageblocksection title="Account Information" showheader="false" collapsible="false" columns="2">
 					<apex:pageblocksectionitem >
-						<apex:outputlabel value="Account Owner"/>
+						<apex:outputlabel value="Account Owner Name"/>
 							<apex:outputpanel >
 							<apex:outputfield value="{!Account.OwnerId}"/>
 							<apex:outputlink value="{!URLFOR($Action.Account.ChangeOwner,Account.id)}" rendered="{!NOT(ISNULL(Account.Id))}">[Change]</apex:outputlink>
